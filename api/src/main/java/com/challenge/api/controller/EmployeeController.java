@@ -15,12 +15,23 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/api/v1/employee")
 public class EmployeeController {
 
+    private final EmployeeService employeeService;
+
+    /**
+     * Constructor
+     * @param employeeService EmployeeService instance
+     */
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
     /**
      * @implNote Need not be concerned with an actual persistence layer. Generate mock Employee models as necessary.
      * @return One or more Employees.
      */
     public List<Employee> getAllEmployees() {
-        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
+        return employeeService.getAllEmployees();
+        // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
 
     /**
@@ -29,7 +40,8 @@ public class EmployeeController {
      * @return Requested Employee if exists
      */
     public Employee getEmployeeByUuid(UUID uuid) {
-        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
+        return employeeService.getEmployeeByUuid(uuid);
+        // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
 
     /**
@@ -38,6 +50,7 @@ public class EmployeeController {
      * @return Newly created Employee
      */
     public Employee createEmployee(Object requestBody) {
-        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
+        return employeeService.createEmployee(requestBody);
+        // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
 }
