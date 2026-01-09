@@ -1,2 +1,1 @@
 spring.application.name: entry-level-java-challenge
-logging.level.org.springframework.web.servlet.mvc.method.annotation: DEBUG

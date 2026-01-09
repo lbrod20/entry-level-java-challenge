@@ -1,11 +1,15 @@
 package com.challenge.api.controller;
 
+import com.challenge.api.dto.CreateEmployeeRequest;
 import com.challenge.api.model.Employee;
 import com.challenge.api.service.EmployeeService;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,7 +34,7 @@ public class EmployeeController {
      * @implNote Need not be concerned with an actual persistence layer. Generate mock Employee models as necessary.
      * @return One or more Employees.
      */
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
         // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
@@ -42,7 +46,7 @@ public class EmployeeController {
      * @return Requested Employee if exists
      */
     @GetMapping("/{uuid}")
-    public Employee getEmployeeByUuid(UUID uuid) {
+    public Employee getEmployeeByUuid(@PathVariable UUID uuid) {
         return employeeService.getEmployeeByUuid(uuid);
         // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -52,8 +56,8 @@ public class EmployeeController {
      * @param requestBody hint!
      * @return Newly created Employee
      */
-    @PostMapping("/create")
-    public Employee createEmployee(Object requestBody) {
+    @PostMapping("/")
+    public Employee createEmployee(@RequestBody @Valid CreateEmployeeRequest requestBody) {
         return employeeService.createEmployee(requestBody);
         // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
