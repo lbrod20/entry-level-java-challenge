@@ -1,6 +1,7 @@
 package com.challenge.api.controller;
 
 import com.challenge.api.dto.CreateEmployeeRequest;
+import com.challenge.api.dto.EmployeeResponse;
 import com.challenge.api.model.Employee;
 import com.challenge.api.service.EmployeeService;
 import jakarta.validation.Valid;
@@ -35,7 +36,7 @@ public class EmployeeController {
      * @return One or more Employees.
      */
     @GetMapping("/")
-    public List<Employee> getAllEmployees() {
+    public List<EmployeeResponse> getAllEmployees() {
         return employeeService.getAllEmployees();
         // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -46,7 +47,7 @@ public class EmployeeController {
      * @return Requested Employee if exists
      */
     @GetMapping("/{uuid}")
-    public Employee getEmployeeByUuid(@PathVariable UUID uuid) {
+    public EmployeeResponse getEmployeeByUuid(@PathVariable UUID uuid) {
         return employeeService.getEmployeeByUuid(uuid);
         // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
