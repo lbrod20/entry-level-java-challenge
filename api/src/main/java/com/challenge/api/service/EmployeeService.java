@@ -1,7 +1,6 @@
 package com.challenge.api.service;
 
 import com.challenge.api.dto.CreateEmployeeRequest;
-import com.challenge.api.dto.EmployeeResponse;
 import com.challenge.api.model.Employee;
 import com.challenge.api.model.EmployeeImpl;
 import java.util.ArrayList;
@@ -38,29 +37,19 @@ public class EmployeeService {
      *
      * @return List of all Employees
      */
-    public List<EmployeeResponse> getAllEmployees() {
-        return employees.stream().map(this::toResponse).toList();
+    public List<Employee> getAllEmployees() {
+        return employees;
     }
 
     /**
      * @param uuid provided UUID from Controller input
      * @return Employee matching UUID if exists or null
      */
-    public EmployeeResponse getEmployeeByUuid(UUID uuid) {
-        Employee employee = employees.stream()
+    public Employee getEmployeeByUuid(UUID uuid) {
+        return employees.stream()
                 .filter(emp -> emp.getUuid().equals(uuid))
                 .findFirst()
                 .orElse(null);
-        return employee != null ? toResponse(employee) : null;
-    }
-
-    private EmployeeResponse toResponse(Employee employee) {
-        EmployeeResponse response = new EmployeeResponse();
-        response.setUuid(employee.getUuid());
-        response.setFirstName(employee.getFirstName());
-        response.setLastName(employee.getLastName());
-        response.setFullName(employee.getFullName());
-        return response;
     }
 
     /**
