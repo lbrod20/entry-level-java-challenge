@@ -6,6 +6,7 @@ import com.challenge.api.service.EmployeeService;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/employee")
 public class EmployeeController {
 
+    /** EmployeeService instance */
     private final EmployeeService employeeService;
 
     /**
@@ -35,6 +37,7 @@ public class EmployeeController {
      * @return One or more Employees.
      */
     @GetMapping("/")
+    @PreAuthorize("hasRole('WEBHOOK')")
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
         // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
@@ -46,6 +49,7 @@ public class EmployeeController {
      * @return Requested Employee if exists
      */
     @GetMapping("/{uuid}")
+    @PreAuthorize("hasRole('WEBHOOK')")
     public Employee getEmployeeByUuid(@PathVariable UUID uuid) {
         return employeeService.getEmployeeByUuid(uuid);
         // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
@@ -57,6 +61,7 @@ public class EmployeeController {
      * @return Newly created Employee
      */
     @PostMapping("/")
+    @PreAuthorize("hasRole('WEBHOOK')")
     public Employee createEmployee(@RequestBody @Valid CreateEmployeeRequest requestBody) {
         return employeeService.createEmployee(requestBody);
         // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
