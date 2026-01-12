@@ -7,7 +7,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
-
 /**
  * Security configuration for the application
  */
@@ -31,7 +30,7 @@ public class SecurityConfig {
 
     /**
      * Deprecated and not recommended for production use. Just for demonstration purposes of security.
-     * 
+     *
      * In-memory user details service for authentication
      * @return UserDetailsService instance
      */

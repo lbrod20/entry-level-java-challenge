@@ -40,7 +40,6 @@ public class EmployeeController {
     @PreAuthorize("hasRole('WEBHOOK')")
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
-        // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
 
     /**
@@ -52,18 +51,16 @@ public class EmployeeController {
     @PreAuthorize("hasRole('WEBHOOK')")
     public Employee getEmployeeByUuid(@PathVariable UUID uuid) {
         return employeeService.getEmployeeByUuid(uuid);
-        // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
 
     /**
      * @implNote Need not be concerned with an actual persistence layer.
-     * @param requestBody hint!
+     * @param requestBody hint! *DTO being created from the request body of the POST*
      * @return Newly created Employee
      */
     @PostMapping("/")
     @PreAuthorize("hasRole('WEBHOOK')")
     public Employee createEmployee(@RequestBody @Valid CreateEmployeeRequest requestBody) {
         return employeeService.createEmployee(requestBody);
-        // throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED);
     }
 }

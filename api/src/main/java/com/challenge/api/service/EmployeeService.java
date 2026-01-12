@@ -60,11 +60,9 @@ public class EmployeeService {
     public Employee createEmployee(CreateEmployeeRequest employeeData) {
         Employee employee = new EmployeeImpl();
 
-        // Set fields that could possibly be internal fields
+        // Set fields from DTO
         employee.setUuid(UUID.randomUUID());
         employee.setContractHireDate(java.time.Instant.now());
-
-        // Set fields the client is possibly allowed to provide
         employee.setFirstName(employeeData.getFirstName());
         employee.setLastName(employeeData.getLastName());
         employee.setFullName(
