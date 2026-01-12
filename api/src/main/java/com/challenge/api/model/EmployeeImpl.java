@@ -3,6 +3,9 @@ package com.challenge.api.model;
 import java.time.Instant;
 import java.util.UUID;
 
+/**
+ * Basic implementation of the Employee interface.
+ */
 public class EmployeeImpl implements Employee {
 
     private UUID uuid;

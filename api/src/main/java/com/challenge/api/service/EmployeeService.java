@@ -34,7 +34,7 @@ public class EmployeeService {
     }
 
     /**
-     *
+     * Retrieves all employees.
      * @return List of all Employees
      */
     public List<Employee> getAllEmployees() {
@@ -42,6 +42,7 @@ public class EmployeeService {
     }
 
     /**
+     * Retrieves an employee by UUID.
      * @param uuid provided UUID from Controller input
      * @return Employee matching UUID if exists or null
      */
@@ -53,7 +54,7 @@ public class EmployeeService {
     }
 
     /**
-     *
+     * Creates a new employee based on the provided request data.
      * @param employeeData CreateEmployeeRequest DTO from Controller
      * @return Newly created Employee
      */
